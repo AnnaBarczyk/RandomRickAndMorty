@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Gathered Characters";
+    var characters = ViewData["Characters"] as IEnumerable<RandomRickAndMorty.Models.CharacterModel>;
+}
+
+@if (characters.Count() > 0)
+{
+    <p>Here you can see all characters from our database</p>
+    <div class="text-center">
+        <table class="tg">
+            <thead>
+                <tr>
+                    <th class="tg-zzvt">Id</th>
+                    <th class="tg-zzvt">Name</th>
+                    <th class="tg-zzvt">Species</th>
+                    <th class="tg-zzvt">Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var character in characters)
+                {
+                    <tr>
+                        <td class="tg-dg7a">@character.Id</td>
+                        <td class="tg-dg7a">@character.Name</td>
+                        <td class="tg-dg7a">@character.Species</td>
+                        <td class="tg-dg7a"><img src="@character.Image" alt="characterImg" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <p>Sorry, but database is empty!</p>
+}
+
